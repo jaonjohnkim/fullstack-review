@@ -20,14 +20,9 @@ let repoSchema = mongoose.Schema({
 let Repo = mongoose.model('Repo', repoSchema);
 
 module.exports.save = (repoData) => {
-  // TODO: Your code here
-  // This function should save a repo or repos to
-  // the MongoDB
   return new Promise((resolve, reject) => {
     repoData.forEach((repo) => {
-      var repo = new Repo (repo);
-      // POST request to MongoDB
-      repo.save((err, repo) => {
+      new Repo(repo).save((err, repo) => {
         if (err) { return console.error(err); }
         console.log('Saved to DB', repo);
       });

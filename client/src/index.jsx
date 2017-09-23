@@ -33,6 +33,7 @@ class App extends React.Component {
     var promiseSearch = $.ajax('/repos', {
       method: 'POST',
       data: term,
+      contentType: 'text/plain',
       dataType: 'text'
     });
     promiseSearch.done((data) => {
