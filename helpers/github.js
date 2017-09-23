@@ -5,7 +5,7 @@ const Promise = require('bluebird');
 let getReposByUsername = (username) => {
   let options = {
     method: 'GET',
-    url: 'https://api.github.com/users/' + username + '/repos',
+    url: `https://api.github.com/users/${username}/repos`,
     headers: {
       'User-Agent': 'request',
       'Authorization': `token ${config.TOKEN}`

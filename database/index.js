@@ -19,17 +19,9 @@ let repoSchema = mongoose.Schema({
 
 let Repo = mongoose.model('Repo', repoSchema);
 
-module.exports.save = (repoData) => {
-  return new Promise((resolve, reject) => {
-    repoData.forEach((repo) => {
-      new Repo(repo).save((err, repo) => {
-        if (err) { return console.error(err); }
-        console.log('Saved to DB', repo);
-      });
-    });
-    resolve();
-  });
-}
+module.exports.save = (repoData) => (
+  Promise.all(repoData.map(repo => new Repo(repo).save()))
+);
 
 module.exports.get = (username) => {
   if (username) {

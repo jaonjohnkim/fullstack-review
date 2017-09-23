@@ -20,27 +20,20 @@ class App extends React.Component {
     var promiseSearch = $.ajax('/repos', {
       method: 'GET'
     });
-    promiseSearch.done((data) => {
-      this.setState({repos: data});
-    });
+    promiseSearch.done(data => this.setState({repos: data}));
     promiseSearch.fail(err => console.error(err));
   }
 
   search (term) {
     console.log(`${term} was searched`);
-    // TODO
-    // POST request to server
     var promiseSearch = $.ajax('/repos', {
       method: 'POST',
       data: term,
       contentType: 'text/plain',
       dataType: 'text'
     });
-    promiseSearch.done((data) => {
-      console.log('Server came back with this:', data);
-      this.setState({repos: JSON.parse(data)});
-    });
-    promiseSearch.fail((err) => {console.error(err);});
+    promiseSearch.done(data => this.setState({repos: JSON.parse(data)}));
+    promiseSearch.fail(err => console.error(err));
   }
 
   render () {

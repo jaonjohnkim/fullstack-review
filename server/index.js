@@ -16,7 +16,7 @@ app.post('/repos', function (req, res) {
   .then(() => res.redirect('/repos'));
 });
 
-app.get('/repos', (req, res) => db.get().then((result) => res.send(result)));
+app.get('/repos', (req, res) => db.get().then(result => res.send(result)));
 
 let port = 1128;
 
