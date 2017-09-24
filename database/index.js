@@ -17,7 +17,7 @@ let repoSchema = mongoose.Schema({
   'forks_count': Number
 });
 
-let Repo = mongoose.model('Repo', repoSchema);
+let Repo = mongoose.model('whatever', repoSchema);
 
 module.exports.save = (repoData) => (
   Promise.all(repoData.map(repo => new Repo(repo).save()))
